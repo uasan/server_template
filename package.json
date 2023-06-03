@@ -1,0 +1,27 @@
+{
+  "name": "template-server",
+  "private": true,
+  "author": "UAH",
+  "description": "description",
+  "version": "1.0.0",
+  "license": "ISC",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "imports": {
+    "#app/*": "./src/app/*"
+  },
+  "scripts": {
+    "dev": "node --watch --experimental-import-meta-resolve ./node_modules/@uah/server/bin/dev.js"
+  },
+  "devDependencies": {
+    "@uah/server": "file:../server",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-prettier": "latest",
+    "prettier": "latest"
+  }
+}
