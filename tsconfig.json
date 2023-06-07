@@ -2,25 +2,8 @@
   "extends": "@uah/server/tsconfig.base.json",
   "include": ["src/**/*"],
   "compilerOptions": {
-    "baseUrl": "src",
     "paths": {
-      "#app/*": ["app/*"]
-    },
-    "plugins": [
-      {
-        "name": "@uah/client",
-        "bundle": {
-          "source": "/src",
-          "target": "bundle.wbn"
-        },
-        "server": {
-          "url": "https://localhost:8443/",
-          "proxy": {
-            "/api/": "https://jsonplaceholder.typicode.com/",
-            "/storage/": "file:/Users/oleksiiskydan/Desktop/Labs/persons/storage/persons"
-          }
-        }
-      }
-    ]
+      "#app/*": ["./src/app/*"]
+    }
   }
 }
