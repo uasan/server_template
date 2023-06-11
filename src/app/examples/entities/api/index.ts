@@ -1,12 +1,16 @@
 import { ContextRequest } from '@uah/server';
+//import { Permissions } from '#lib/permissions.ts';
+import { getItems } from '../queries/gerItems';
 
 type Payload = {
   id: number;
 };
 
-export class Entities extends ContextRequest {
-  //@Permission('use_entities')
+export default class Entities extends ContextRequest {
+  //@Permissions.gerEntities
   async get(payload: Payload) {
+    getItems(payload.id);
+
     return payload.id;
   }
 

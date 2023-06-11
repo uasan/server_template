@@ -9,9 +9,6 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "imports": {
-    "#app/*": "./src/app/*"
-  },
   "scripts": {
     "dev": "node --watch --experimental-import-meta-resolve ./node_modules/@uah/server/bin/dev.js"
   },
