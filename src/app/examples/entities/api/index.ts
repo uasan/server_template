@@ -10,7 +10,6 @@ export default class Entities extends ContextRequest {
   //@Permissions.gerEntities
   async get(payload: Payload) {
     getItems(payload.id);
-
     return payload.id;
   }
 
