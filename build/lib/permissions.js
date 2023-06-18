@@ -1,3 +1,1 @@
-export const Permissions = {
-    gerEntities(target, ctx) { },
-};
+export const canGetEntities = [() => true];

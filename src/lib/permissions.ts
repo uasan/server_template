@@ -1,3 +1,2 @@
-export const Permissions = {
-  gerEntities(target: any, ctx: ClassMethodDecoratorContext) {},
-};
+export const //Permissions
+  canGetEntities = [() => true];
