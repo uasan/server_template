@@ -1,20 +1,22 @@
-import { RequestContext, Permission } from '@uah/server';
+import { Permission } from '@uah/server';
 import { getItems } from '../queries/gerItems';
 import { canGetEntities } from '#lib/permissions';
+import { AppContext } from '#app/context';
 
 type Payload = {
   id: number;
 };
 
-export class Entities extends RequestContext {
+export class Entities extends AppContext {
   @Permission(canGetEntities)
   async get(payload: Payload) {
-    getItems(1);
+    getItems(48);
     await new Promise(resolve => setTimeout(resolve));
-    //return 'new ReadableStream()';
+    return payload;
   }
 
-  async post(payload: Payload) {
-    return payload.id;
+  @Permission(true)
+  async post(payload: BlobOptions) {
+    return payload;
   }
 }
