@@ -1,4 +1,11 @@
-import { Permission, type UUID, type Default } from '@uah/server';
+import {
+  Permission,
+  type Text,
+  type Int,
+  type UUID,
+  type Email,
+  type Default,
+} from '@uah/server';
 import { canGetEntities } from '#lib/permissions';
 import { AppContext } from '#app/context';
 import { Direction as Dir } from '../queries/gerItems';
@@ -10,16 +17,22 @@ export enum FileAccess {
   ReadWrite = Read - Write,
 }
 
-type Payload = {
+const keyObj = { key1: 'KEY 1', key2: 'KEY 2', key3: 'KEY 3' };
+
+const myReGexp = /\w+/;
+
+export type Payload = {
   id: number;
-  myText?: string;
-  myUuid?: UUID[];
-  myNumber?: number | null;
+  myText?: Text<{ max: 3; mix: 5; trim: true; pattern: typeof myReGexp }>;
+  myUuid?: UUID;
+  myEmail?: Email;
+  myNumber?: Int<{ min: 1; max: 99; default: 45 }> | null;
   myNumberArray?: number[];
-  myAny?: 'A' | Default<'B'> | 'C';
+  myKeyOf?: keyof typeof keyObj | number;
   myEnum?: Dir | Default<Dir.Left>;
   myObject?: {
     textValue: string;
+    num: number;
   };
 };
 
