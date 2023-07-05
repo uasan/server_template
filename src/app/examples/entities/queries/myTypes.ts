@@ -1,3 +1,9 @@
+import type { Int, Text } from '@uah/server';
+
+export type IntPositive = Int<{ min: 1 }>;
+export type PhoneNumber = Text<{ min: 3; digits: true }>;
+export type Keywords = Text<{ min: 1; trim: true; lowercase: true }>;
+
 export const enum Direction {
   Up = 'UP',
   Down = 'DOWN',
