@@ -27,7 +27,7 @@ const keyObj = { key1: 'KEY 1', key2: 'KEY 2', key3: 'KEY 3' };
 
 const myReGexp = /\w+/;
 
-interface Payload1 {
+declare class SubObject {
   textValue: string;
   num: Int<{ min: 3 }>;
 }
@@ -35,7 +35,12 @@ interface Payload1 {
 interface Payload {
   id: IntPositive;
   keywords?: Keywords;
-  myText?: Text<{ min: 3; max: 5; trim: true; pattern: typeof myReGexp }>;
+  myText?: Text<{
+    min: 3;
+    max: 5;
+    trim: true;
+    pattern: typeof myReGexp;
+  }>;
   myArrayUUID?: (UUID | null)[] | Default<null>;
   myEmail?: Email;
   myPhone?: PhoneNumber;
@@ -46,19 +51,24 @@ interface Payload {
   myKeyOf?: keyof typeof keyObj;
   myEnum?: Dir | Default<Dir.Left>;
   myObject?: object;
-  myObjectRecord?: Record<string, any>;
-  myStructObject?: Payload1;
+  myObjectRecord?: Record<string, string>;
+  myStructObject?: SubObject;
 }
 
-export class Entities extends AppContext {
+export default class extends AppContext {
   @Permission(canGetEntities)
   async get(payload: Payload) {
-    await new Promise(resolve => setTimeout(resolve));
-    return payload;
+    const result = await this.sql`
+      SELECT *
+      FROM ludicloud.users
+      WHERE uid = ANY(${payload.myArrayUUID})
+    `.asObject();
+
+    return { payload, result };
   }
 
-  // @Permission(true)
-  // async post(payload: Payload) {
-  //   return payload;
-  // }
+  @Permission(true)
+  async post(payload: Payload) {
+    return payload;
+  }
 }
