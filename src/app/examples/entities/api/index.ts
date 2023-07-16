@@ -57,11 +57,11 @@ interface Payload {
 
 export default class extends AppContext {
   @Permission(canGetEntities)
-  async get(payload: Payload) {
+  async get({ myArrayUUID, ...payload }: Payload) {
     const result = await this.sql`
       SELECT *
       FROM ludicloud.users
-      WHERE uid = ANY(${payload.myArrayUUID})
+      WHERE uid = ANY(${myArrayUUID})
     `.asObject();
 
     return { payload, result };
