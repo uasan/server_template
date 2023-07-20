@@ -1,1 +1,1 @@
-export const canGetEntities = [() => true];
+export const canGetEntities = () => true;

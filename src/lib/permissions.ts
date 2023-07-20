@@ -1,2 +1,2 @@
 export const //Permissions
-  canGetEntities = [() => true];
+  canGetEntities = () => true;

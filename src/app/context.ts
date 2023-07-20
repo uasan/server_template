@@ -12,3 +12,14 @@ export class AppContext extends RequestContext {
     //
   }
 }
+
+export const dbConnect = new (
+  @Postgres({
+    port: 5432,
+    host: 'dddd',
+    database: 'develop',
+    username: 'api_ludicloud',
+    password: 'pass',
+  })
+  class {}
+)();
