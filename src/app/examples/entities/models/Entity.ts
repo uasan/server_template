@@ -1,11 +1,7 @@
-import { TableModel } from '@uah/server';
+import { TableModel, type Column, type UUID } from '@uah/server';
 
 export class Entity extends TableModel {
   static tableName = 'myTable';
+
+  id: Column<UUID, { primary: true; default: '1' }> = '';
 }
-
-// export class Entity2 extends Entity {
-//   static tableName = 'myTable';
-
-//   my_jsonb: Column<jsonb>
-// }

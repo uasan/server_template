@@ -64,12 +64,12 @@ class Payload {
 
 export class Entity extends AppContext {
   @Permission(canGetEntities)
-  async get({ myArrayUUID, ...payload }: Payload) {
+  async get(payload: Payload) {
     const result = await this.sql`
-      SELECT uid
+      SELECT *
       FROM ludicloud.users
-      WHERE uid = ANY(${myArrayUUID})
-    `.asValue();
+      WHERE uid = ANY(${payload.myArrayUUID})
+    `.asObject();
 
     return { payload, result };
   }
