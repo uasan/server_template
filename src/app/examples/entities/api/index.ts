@@ -3,7 +3,6 @@ import {
   type Text,
   type Int,
   type Float,
-  type UUID,
   type Email,
 } from '@uah/server';
 import { canGetEntities } from '#lib/permissions';
@@ -14,6 +13,7 @@ import {
   type Keywords,
   type PhoneNumber,
 } from '../queries/myTypes.ts';
+import type { EntityModel } from '../models/Entity.ts';
 
 export enum FileAccess {
   None,
@@ -40,7 +40,7 @@ class Payload {
     trim: true;
     pattern: typeof myReGexp;
   }>;
-  myArrayUUID?: (UUID | null)[] | null = null;
+  myArrayUUID?: EntityModel['id'][] | null = null;
   myEmail?: Email;
   myPhone?: PhoneNumber;
   myInt?: Int<{

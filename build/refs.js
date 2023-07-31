@@ -1,5 +1,5 @@
 export const
-$0=_=>{_.isNull().isUUID()},
+$0=_=>{_.isUUID()},
 $1=_=>{_.isNumber()},
 $2=[null,"A","B","C"],
 $3=["key1","key2","key3"],

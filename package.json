@@ -10,7 +10,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "dev": "node --watch --experimental-import-meta-resolve ./node_modules/@uah/server/bin/dev.js"
+    "dev": "UAH.server"
   },
   "devDependencies": {
     "@uah/server": "file:../server",

@@ -1,7 +1,20 @@
-import { TableModel, type Column, type UUID } from '@uah/server';
+import { TableModel, Table, type UUID } from '@uah/server';
+import { User } from './User';
 
-export class Entity extends TableModel {
-  static tableName = 'myTable';
-
-  id: Column<UUID, { primary: true; default: '1' }> = '';
+@Table({
+  name: 'my_name',
+  primary: ['id'],
+  references: {
+    //...
+  },
+  constrains: {
+    //...
+  },
+  indexes: {
+    //...
+  },
+})
+export class EntityModel extends TableModel {
+  id: UUID;
+  uid: User['uid'];
 }
