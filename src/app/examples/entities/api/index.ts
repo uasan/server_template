@@ -41,6 +41,7 @@ class Payload {
     pattern: typeof myReGexp;
   }>;
   myArrayUUID?: EntityModel['id'][] | null = null;
+  myTuple: [string, number, ...string[]];
   myEmail?: Email;
   myPhone?: PhoneNumber;
   myInt?: Int<{
