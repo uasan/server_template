@@ -13,7 +13,7 @@ import {
   type Keywords,
   type PhoneNumber,
 } from '../queries/myTypes.ts';
-import type { EntityModel } from '../models/Entity.ts';
+import type { EntityTable } from '../models/EntityTable.ts';
 
 export enum FileAccess {
   None,
@@ -40,8 +40,8 @@ class Payload {
     trim: true;
     pattern: typeof myReGexp;
   }>;
-  myArrayUUID?: EntityModel['id'][] | null = null;
-  myTuple: [string, number, ...string[]];
+  myArrayUUID?: EntityTable['id'][] | null = null;
+  myTuple?: [string, number, ...string[]];
   myEmail?: Email;
   myPhone?: PhoneNumber;
   myInt?: Int<{
