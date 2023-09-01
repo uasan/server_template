@@ -6,7 +6,7 @@ import {
   type Email,
 } from '@uah/server';
 import { canGetEntities } from '#lib/permissions';
-import { AppContext } from '#app/context';
+import { Server } from '#lib/Server.ts';
 import {
   Direction as Dir,
   type IntPositive,
@@ -63,7 +63,7 @@ class Payload {
   myStructObject?: SubObject;
 }
 
-export class Entity extends AppContext {
+export class Entity extends Server {
   @Permission(canGetEntities)
   async get(payload: Payload) {
     const result = await this.sql`

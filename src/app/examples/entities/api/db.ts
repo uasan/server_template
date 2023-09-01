@@ -1,12 +1,12 @@
 //import myQuery from '../queries/myQuery.sql';
 import { type UUID } from '@uah/server';
-import { AppContext } from '#app/context';
+import { Server } from '#lib/Server';
 
 type Payload = {
   id: UUID;
 };
 
-export default class extends AppContext {
+export default class extends Server {
   async get(payload: Payload) {
     //return await myQuery(this, payload);
   }

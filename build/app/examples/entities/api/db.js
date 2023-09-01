@@ -1,7 +1,7 @@
-import { AppContext } from "../../../context.js";
+import { Server } from "../../../../lib/Server.js";
 import { respondNoContent, respondError } from "@uah/server/src/runtime/server/response.js";
 import { Validator } from "@uah/server/src/runtime/types/validator.js";
-export default class extends AppContext {
+export default class extends Server {
     async get(payload) {
         new Validator(payload).setKey("id").isUUID().validate();
     }

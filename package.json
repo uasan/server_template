@@ -10,7 +10,8 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "dev": "UAH.server"
+    "dev": "UAH.server",
+    "migrate": "UAH.migrate"
   },
   "devDependencies": {
     "@uah/server": "file:../server",
