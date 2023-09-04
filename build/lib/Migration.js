@@ -5,8 +5,8 @@ export class Migration extends MigrationContext {
         initPostgres(this, {
             port: 5432,
             host: 'localhost',
-            database: 'develop333',
-            username: 'api_ludicloud',
+            database: 'AAAAAA',
+            username: 'postgres',
             password: 'pass',
         });
     }

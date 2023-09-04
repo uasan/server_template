@@ -10,6 +10,7 @@ export class Server extends ServerContext {
             database: 'develop',
             username: 'api_ludicloud',
             password: 'pass',
+            maxConnections: 10,
         });
     }
 }
