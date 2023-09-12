@@ -1,15 +1,18 @@
 import { TableModel, type UUID } from '@uah/server';
-import { UserTable } from './UserTable';
+import { UserTable } from './User';
 
 export class EntityTable extends TableModel<{
-  name: 'my_name';
+  name: 'entitiesCamelCase';
   primary: ['id'];
   references: {
     myRefName: {
       onUpdate: 'cascade';
-      onDelete: 'setNull';
+      onDelete: 'cascade';
       deferrable: 'deferred';
-      keys: { id: UserTable['uid']; uid: UserTable['username'] };
+      keys: {
+        id: UserTable['uid'];
+        uid: UserTable['username'];
+      };
     };
   };
   constrains: {

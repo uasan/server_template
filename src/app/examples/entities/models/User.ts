@@ -1,11 +1,9 @@
 import { TableModel, type UUID } from '@uah/server';
 
-interface TableStruct {
-  name: 'users';
+export class UserTable extends TableModel<{
+  name: 'accounts.users';
   primary: ['uid'];
-}
-
-export class UserTable extends TableModel<TableStruct> {
+}> {
   uid: UUID;
   username: string | null;
 }

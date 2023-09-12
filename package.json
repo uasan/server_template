@@ -13,6 +13,9 @@
     "dev": "UAH.server",
     "migrate": "UAH.migrate"
   },
+  "imports": {
+    "#lib": "./src/lib/*"
+  },
   "devDependencies": {
     "@uah/server": "file:../server",
     "@types/node": "latest",

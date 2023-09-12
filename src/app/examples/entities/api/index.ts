@@ -13,7 +13,7 @@ import {
   type Keywords,
   type PhoneNumber,
 } from '../queries/myTypes.ts';
-import type { EntityTable } from '../models/EntityTable.ts';
+import type { EntityTable } from '../models/Entity.ts';
 
 export enum FileAccess {
   None,
