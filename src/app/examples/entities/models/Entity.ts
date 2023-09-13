@@ -2,7 +2,7 @@ import { TableModel, type UUID } from '@uah/server';
 import { UserTable } from './User';
 
 export class EntityTable extends TableModel<{
-  name: 'entitiesCamelCase';
+  name: 'persons.entitiesCamelCase';
   primary: ['id'];
   references: {
     myRefName: {
