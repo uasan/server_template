@@ -1,6 +1,7 @@
 import { canGetEntities } from "../../../../lib/permissions.js";
 import { Server } from "../../../../lib/Server.js";
 import { Direction as Dir } from "../queries/myTypes.js";
+import { UserTable } from "../models/User.js";
 import { tryParseJson, decodeJSON } from "@uah/server/src/runtime/types/json.js";
 import { respondJson, respondError } from "@uah/server/src/runtime/server/response.js";
 import { readBody } from "@uah/server/src/runtime/server/request.js";
@@ -19,9 +20,10 @@ export class Entity extends Server {
         this.permission = await canGetEntities(this, payload);
         const result = await this.sql `
       SELECT *
-      FROM ludicloud.users
+      FROM ${UserTable} AS users
       WHERE uid = ANY(${payload.myArrayUUID})
-    `.asObject();
+      LIMIT `.sql(10) `
+      `.asObject();
         return { payload, result };
     }
     async post(payload) {

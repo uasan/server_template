@@ -14,6 +14,7 @@ import {
   type PhoneNumber,
 } from '../queries/myTypes.ts';
 import type { EntityTable } from '../models/Entity.ts';
+import { UserTable } from '../models/User.ts';
 
 export enum FileAccess {
   None,
@@ -68,9 +69,10 @@ export class Entity extends Server {
   async get(payload: Payload) {
     const result = await this.sql`
       SELECT *
-      FROM ludicloud.users
+      FROM ${UserTable} AS users
       WHERE uid = ANY(${payload.myArrayUUID})
-    `.asObject();
+      LIMIT `.sql(10)`
+      `.asObject();
 
     return { payload, result };
   }
