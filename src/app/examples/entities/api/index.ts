@@ -29,7 +29,7 @@ const myReGexp = /\w+/;
 
 declare class SubObject {
   textValue: string;
-  num: Int<{ min: 3 }>;
+  num: Int<{ min: 3; }>;
 }
 
 class Payload {

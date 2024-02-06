@@ -2,11 +2,11 @@ import { canGetEntities } from "../../../../lib/permissions.js";
 import { Server } from "../../../../lib/Server.js";
 import { Direction as Dir } from "../queries/myTypes.js";
 import { UserTable } from "../models/User.js";
+import { $0, $1, $2, $3, $4, $5 } from "../../../../refs.js";
 import { tryParseJson, decodeJSON } from "@uah/server/src/runtime/types/json.js";
 import { respondJson, respondError } from "@uah/server/src/runtime/server/response.js";
 import { readBody } from "@uah/server/src/runtime/server/request.js";
 import { Validator } from "@uah/server/src/runtime/types/validator.js";
-import { $0, $1, $2, $3, $4, $5 } from "../../../../refs.js";
 export const FileAccess = { None: 0, Read: 2, Write: 4, ReadWrite: -2 };
 const keyObj = { key1: 'KEY 1', key2: 'KEY 2', key3: 'KEY 3' };
 const myReGexp = /\w+/;
@@ -16,7 +16,7 @@ class Payload {
 }
 export class Entity extends Server {
     async get(payload) {
-        new Validator(payload).setKey("id").isInt().isMin(1).setKey("keywords", true).isString().trimString().isMinLength(1).toLowerCase().setKey("myText", true).isString().trimString().isMinLength(3).isMaxLength(5).isTextPattern(myReGexp).setKey("myArrayUUID", true, null).isNull().forArray($0).setKey("myTuple", true).isMinLength(2).isArray().setKey("myEmail", true).isEmail().setKey("myPhone", true).isString().toDigitsString().isMinLength(3).setKey("myInt", true, 45).isInt().isMin(1).isMax(99).setKey("myFloat").isNull().isNumber().isMin(10.5).isMax(20.01).setKey("myNumberArray", true).forArray($1).setKey("myUnion").inArray($2).setKey("myKeyOf", true).inArray($3).setKey("myEnum", true, Dir.Left).inArray($4).setKey("myObject", true).isObject().setKey("myObjectRecord", true).isObject().setKey("myStructObject", true).forObject($5).validate();
+        new Validator(payload).setKey("id").isInt().isMin(1).setKey("keywords", true).isString().trimString().toLowerCase().setKey("myText", true).isString().trimString().isTextPattern(myReGexp).setKey("myArrayUUID", true, null).isNull().forArray($0).setKey("myTuple", true).isMinLength(2).isArray().setKey("myEmail", true).isEmail().setKey("myPhone", true).isString().toDigitsString().setKey("myInt", true, 45).isInt().isMin(1).isMax(99).setKey("myFloat").isNull().isNumber().isMin(10.5).isMax(20.01).setKey("myNumberArray", true).forArray($1).setKey("myUnion").inArray($2).setKey("myKeyOf", true).inArray($3).setKey("myEnum", true, Dir.Left).inArray($4).setKey("myObject", true).isObject().setKey("myObjectRecord", true).isObject().setKey("myStructObject", true).forObject($5).validate();
         this.permission = await canGetEntities(this, payload);
         const result = await this.sql `
       SELECT *
@@ -27,7 +27,7 @@ export class Entity extends Server {
         return { payload, result };
     }
     async post(payload) {
-        new Validator(payload).setKey("id").isInt().isMin(1).setKey("keywords", true).isString().trimString().isMinLength(1).toLowerCase().setKey("myText", true).isString().trimString().isMinLength(3).isMaxLength(5).isTextPattern(myReGexp).setKey("myArrayUUID", true, null).isNull().forArray($0).setKey("myTuple", true).isMinLength(2).isArray().setKey("myEmail", true).isEmail().setKey("myPhone", true).isString().toDigitsString().isMinLength(3).setKey("myInt", true, 45).isInt().isMin(1).isMax(99).setKey("myFloat").isNull().isNumber().isMin(10.5).isMax(20.01).setKey("myNumberArray", true).forArray($1).setKey("myUnion").inArray($2).setKey("myKeyOf", true).inArray($3).setKey("myEnum", true, Dir.Left).inArray($4).setKey("myObject", true).isObject().setKey("myObjectRecord", true).isObject().setKey("myStructObject", true).forObject($5).validate();
+        new Validator(payload).setKey("id").isInt().isMin(1).setKey("keywords", true).isString().trimString().toLowerCase().setKey("myText", true).isString().trimString().isTextPattern(myReGexp).setKey("myArrayUUID", true, null).isNull().forArray($0).setKey("myTuple", true).isMinLength(2).isArray().setKey("myEmail", true).isEmail().setKey("myPhone", true).isString().toDigitsString().setKey("myInt", true, 45).isInt().isMin(1).isMax(99).setKey("myFloat").isNull().isNumber().isMin(10.5).isMax(20.01).setKey("myNumberArray", true).forArray($1).setKey("myUnion").inArray($2).setKey("myKeyOf", true).inArray($3).setKey("myEnum", true, Dir.Left).inArray($4).setKey("myObject", true).isObject().setKey("myObjectRecord", true).isObject().setKey("myStructObject", true).forObject($5).validate();
         return payload;
     }
     static get = async (res, req) => { try {

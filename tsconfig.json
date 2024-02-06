@@ -1,10 +1,16 @@
 {
-  "extends": "@uah/server/tsconfig.base.json",
-  "include": ["src/**/*"],
+  "extends": "@uah/server/tsconfig.json",
+  "include": [
+    "src/**/*"
+  ],
   "compilerOptions": {
     "paths": {
-      "#app/*": ["./src/app/*"],
-      "#lib/*": ["./src/lib/*"]
+      "#app/*": [
+        "./src/app/*"
+      ],
+      "#lib/*": [
+        "./src/lib/*"
+      ]
     }
   }
 }
