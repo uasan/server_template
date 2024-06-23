@@ -1,11 +1,11 @@
 import {
-  Permission,
+  //Permission,
   type Text,
   type Int,
   type Float,
   type Email,
 } from '@uah/server';
-import { canGetEntities } from '#lib/permissions';
+//import { canGetEntities } from '#lib/permissions';
 import { Server } from '#lib/Server.ts';
 import {
   Direction as Dir,
@@ -33,7 +33,7 @@ declare class SubObject {
 }
 
 class Payload {
-  id: IntPositive;
+  id!: IntPositive;
   keywords?: Keywords;
   myText?: Text<{
     min: 3;
@@ -65,12 +65,12 @@ class Payload {
 }
 
 export class Entity extends Server {
-  @Permission(canGetEntities)
-  async get(payload: Payload) {
+  //@Permission(canGetEntities)
+  async get({ myArrayUUID, ...payload }: Payload) {
     const result = await this.sql`
       SELECT *
       FROM ${UserTable} AS users
-      WHERE uid = ANY(${payload.myArrayUUID})
+      WHERE uid = ANY(${myArrayUUID})
       LIMIT `.sql(10)`
       `.asObject();
 
