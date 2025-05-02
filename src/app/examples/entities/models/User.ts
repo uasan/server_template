@@ -1,7 +1,7 @@
 import { Table, TableModel, type UUID } from '@uah/server';
 
 @Table({
-  name: 'ludicloud.users',
+  name: 'public.users',
   primary: ['uid'],
 })
 export class UserTable extends TableModel {
