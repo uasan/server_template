@@ -1,4 +1,4 @@
-import { Table, TableModel, type UUID } from '@uah/server';
+import { Table, TableModel, type Text, type UUID } from '@uah/server';
 
 @Table({
   name: 'public.users',
@@ -6,5 +6,5 @@ import { Table, TableModel, type UUID } from '@uah/server';
 })
 export class UserTable extends TableModel {
   uid!: UUID;
-  username!: string;
+  username!: Text<{ maxLength: 10 }>;
 }

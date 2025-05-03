@@ -1,20 +1,15 @@
 import {
-  //Permission,
-  type Text,
-  type Int,
-  type Float,
   type Email,
+  type Float,
+  type Int,
+  // Permission,
+  type Text,
 } from '@uah/server';
-//import { canGetEntities } from '#lib/permissions';
+// import { canGetEntities } from '#lib/permissions';
 import { Server } from '#lib/Server.ts';
-import {
-  Direction as Dir,
-  type IntPositive,
-  type Keywords,
-  type PhoneNumber,
-} from '../queries/myTypes.ts';
 import type { EntityTable } from '../models/Entity.ts';
 import { UserTable } from '../models/User.ts';
+import { Direction as Dir, type IntPositive, type Keywords, type PhoneNumber } from '../queries/myTypes.ts';
 
 export enum FileAccess {
   None,
@@ -29,15 +24,15 @@ const myReGexp = /\w+/;
 
 declare class SubObject {
   textValue: string;
-  num: Int<{ min: 3; }>;
+  num: Int<{ min: 3 }>;
 }
 
 class Payload {
   id!: IntPositive;
   keywords?: Keywords;
   myText?: Text<{
-    min: 3;
-    max: 5;
+    minLength: 3;
+    maxLength: 5;
     trim: true;
     pattern: typeof myReGexp;
   }>;
@@ -50,11 +45,13 @@ class Payload {
     max: 99;
     default: 45;
   }>;
-  myFloat?: Float<{
-    min: 10.5;
-    max: 20.01;
-    default: 17.3;
-  }> | null;
+  myFloat?:
+    | Float<{
+      min: 10.5;
+      max: 20.01;
+      default: 17.3;
+    }>
+    | null;
   myNumberArray?: number[];
   myUnion?: 'A' | 'B' | 'C' | null;
   myKeyOf?: keyof typeof keyObj;
@@ -65,7 +62,7 @@ class Payload {
 }
 
 export class Entity extends Server {
-  //@Permission(canGetEntities)
+  // @Permission(canGetEntities)
   async get({ myArrayUUID, ...payload }: Payload) {
     const result = await this.sql`
       SELECT *
