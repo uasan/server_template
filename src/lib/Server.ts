@@ -3,7 +3,7 @@ import { ServerContext, Postgres } from '@uah/server';
 @Postgres({
   port: 5432,
   host: 'localhost',
-  database: 'develop',
+  database: 'uah',
   username: 'api_ludicloud',
   password: 'pass',
   maxConnections: 10,

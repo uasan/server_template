@@ -3,7 +3,7 @@ import { Postgres, MigrationContext } from '@uah/server';
 @Postgres({
   port: 5432,
   host: 'localhost',
-  database: 'AAAAAA',
+  database: 'uah',
   username: 'postgres',
   password: 'pass',
 })

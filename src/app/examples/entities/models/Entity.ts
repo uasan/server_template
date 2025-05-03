@@ -1,4 +1,5 @@
 import { Table, TableModel, type UUID } from '@uah/server';
+import { UserTable } from './User';
 
 @Table({
   name: 'persons.entitiesCamelCase',
@@ -23,5 +24,5 @@ import { Table, TableModel, type UUID } from '@uah/server';
 })
 export class EntityTable extends TableModel {
   id!: UUID;
-  uid!: UUID;
+  uid!: UserTable['uid'];
 }
