@@ -1,6 +1,7 @@
-//import myQuery from '../queries/myQuery.sql';
-import { type UUID } from '@uah/server';
+// import myQuery from '../queries/myQuery.sql';
 import { Server } from '#lib/Server';
+import { type UUID } from '@uah/server';
+import { MyWebsocket } from './websocket';
 
 type Payload = {
   id: UUID;
@@ -8,6 +9,8 @@ type Payload = {
 
 export default class extends Server {
   async get(payload: Payload) {
-    //return await myQuery(this, payload);
+    // this.sendMessageToChannel('AA');
+    MyWebsocket.sendMessageToChannel('name', 'payload');
+    // return await myQuery(this, payload);
   }
 }

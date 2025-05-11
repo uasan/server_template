@@ -1,4 +1,4 @@
-import { ServerContext, Postgres } from '@uah/server';
+import { Postgres, ServerContext } from '@uah/server';
 
 @Postgres({
   port: 5432,
