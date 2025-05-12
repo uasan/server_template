@@ -14,8 +14,8 @@ export class MyWebsocket extends Server implements WebSocketRPC {
     setInterval(testPublishToChannel, 3000, payload.channel);
 
     return {
-      userId: 'myUserId',
-      peerId: randomUUID(),
+      uid: 'myUserId',
+      sid: randomUUID(),
     };
   }
 
