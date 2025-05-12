@@ -1,6 +1,7 @@
 import { canConnectWebSocket } from '#lib/permissions';
 import { Server } from '#lib/Server';
 import { Permission, type WebSocketRPC } from '@uah/server';
+import { randomUUID } from 'node:crypto';
 
 interface Payload {
   channel: string;
@@ -10,12 +11,11 @@ export class MyWebsocket extends Server implements WebSocketRPC {
   @Permission(canConnectWebSocket)
   async onOpen(payload: Payload) {
     this.subscribeToChannel(payload.channel);
-
     setInterval(testPublishToChannel, 3000, payload.channel);
 
     return {
-      peerId: 'myPeerId',
       userId: 'myUserId',
+      peerId: randomUUID(),
     };
   }
 
