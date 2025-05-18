@@ -6,7 +6,7 @@ import {
   type Text,
 } from '@uah/server';
 // import { canGetEntities } from '#lib/permissions';
-import { Server } from '#lib/Server.ts';
+import { Api } from '#lib/Api.ts';
 import type { EntityTable } from '../models/Entity.ts';
 import { UserTable } from '../models/User.ts';
 import { Direction as Dir, type IntPositive, type Keywords, type PhoneNumber } from '../queries/myTypes.ts';
@@ -61,7 +61,7 @@ class Payload {
   myStructObject?: SubObject;
 }
 
-export class Entity extends Server {
+export class Entity extends Api {
   // @Permission(canGetEntities)
   async get({ myArrayUUID, ...payload }: Payload) {
     const result = await this.sql`

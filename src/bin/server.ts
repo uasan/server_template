@@ -1,5 +1,3 @@
-import { Server } from '@uah/server';
+import { Api } from '../lib/Api.ts';
 
-Server.start({
-  url: 'http://localhost:3000/api/:lang/',
-});
+await Api.server.start();

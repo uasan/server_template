@@ -1,5 +1,5 @@
-import type { Server } from '#lib/Server';
+import type { Api } from '#lib/Api';
 
-export async function helloWorld(context: Server) {
+export async function helloWorld(context: Api) {
   return context.user;
 }
