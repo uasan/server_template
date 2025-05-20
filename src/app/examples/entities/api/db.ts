@@ -1,6 +1,6 @@
 import { Api } from '#lib/Api';
 import { type UUID } from '@uah/server';
-import { MyWebsocket } from './websocket';
+import { MyWebsocket } from '../../websocket/api/json-rpc.ts';
 
 type Payload = {
   id: UUID;
