@@ -1,5 +1,9 @@
 import { Postgres, Server, ServerContext } from '@uah/server';
 
+interface User {
+  id: bigint;
+}
+
 @Postgres({
   port: 5432,
   host: 'localhost',
@@ -13,6 +17,7 @@ import { Postgres, Server, ServerContext } from '@uah/server';
 })
 export class Api extends ServerContext {
   lang: string;
+  user!: User;
 
   constructor(preset: { lang: string }) {
     super();
