@@ -1,9 +1,9 @@
+import type { User } from '#app/examples/entities/models/User.ts';
 import { Postgres, Server, ServerContext } from '@uah/server';
 
-interface User {
-  id: bigint;
-}
-
+@Server({
+  url: 'http://localhost:3000/api/',
+})
 @Postgres({
   port: 5432,
   host: 'localhost',
@@ -12,12 +12,9 @@ interface User {
   password: 'pass',
   maxConnections: 10,
 })
-@Server({
-  url: 'http://localhost:3000/api/',
-})
 export class Api extends ServerContext {
   lang: string;
-  user!: User;
+  uid!: User['uid'];
 
   constructor(preset: { lang: string }) {
     super();

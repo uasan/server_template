@@ -1,3 +1,4 @@
+import { helloWorld } from '#app/examples/entities/actions/methods.ts';
 import { Api } from '#lib/Api';
 import { canConnectWebSocket } from '#lib/permissions';
 import { Permission, type WebSocketRPC } from '@uah/server';
@@ -8,12 +9,13 @@ interface Payload {
 }
 
 export class MyWebsocket extends Api implements WebSocketRPC {
+  methods = { helloWorld };
+
   @Permission(canConnectWebSocket)
   async onOpen(payload: Payload) {
-    this.sendMessageToSocket('Test sendMessageToSocket');
     this.subscribeToChannel(payload.channel);
-
-    setInterval(testPublishToChannel, 3000, payload.channel);
+    this.sendMessageToSocket('Test sendMessageToSocket');
+    setTimeout(testPublishToChannel, 1000, payload.channel);
 
     return {
       uid: 'myUserId',
@@ -27,5 +29,5 @@ export class MyWebsocket extends Api implements WebSocketRPC {
 }
 
 function testPublishToChannel(name: string) {
-  MyWebsocket.sendMessageToChannel(name, `Test publish to channel ${name}`);
+  MyWebsocket.sendMessageToChannel(name, `Test publish to channel`);
 }

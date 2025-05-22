@@ -4,7 +4,7 @@ import { Table, TableModel, type Text, type UUID } from '@uah/server';
   name: 'public.users',
   primary: ['uid'],
 })
-export class UserTable extends TableModel {
+export class User extends TableModel {
   uid!: UUID;
   username!: Text<{ maxLength: 10 }>;
 }

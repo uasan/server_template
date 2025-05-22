@@ -4,6 +4,12 @@ const socket = new WebSocket('ws://localhost:3000/api/en/examples/websocket/json
 
 socket.addEventListener('open', () => {
   console.log('onOpen');
+
+  socket.send(JSON.stringify({
+    id: 1,
+    method: 'helloWorld',
+    params: 'My payload',
+  }));
 });
 
 socket.addEventListener('message', event => {

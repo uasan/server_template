@@ -8,7 +8,7 @@ import {
 // import { canGetEntities } from '#lib/permissions';
 import { Api } from '#lib/Api.ts';
 import type { EntityTable } from '../models/Entity.ts';
-import { UserTable } from '../models/User.ts';
+import { User } from '../models/User.ts';
 import { Direction as Dir, type IntPositive, type Keywords, type PhoneNumber } from '../queries/myTypes.ts';
 
 export enum FileAccess {
@@ -66,7 +66,7 @@ export class Entity extends Api {
   async get({ myArrayUUID, ...payload }: Payload) {
     const result = await this.sql`
       SELECT *
-      FROM ${UserTable} AS users
+      FROM ${User} AS users
       WHERE uid = ANY(${myArrayUUID})
       LIMIT `.sql(10)`
       `.asObject();
