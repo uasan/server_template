@@ -17,10 +17,7 @@ export class MyWebsocket extends Api implements WebSocketRPC {
     this.sendMessageToSocket('Test sendMessageToSocket');
     setTimeout(testPublishToChannel, 1000, payload.channel);
 
-    return {
-      uid: 'myUserId',
-      sid: randomUUID(),
-    };
+    return randomUUID();
   }
 
   async onClose() {
