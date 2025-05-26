@@ -1,4 +1,4 @@
-import { Api } from '#lib/Api';
+import { Api } from '#lib/context/Api.ts';
 import { type UUID } from '@uah/server';
 import { MyWebsocket } from '../../websocket/api/json-rpc.ts';
 

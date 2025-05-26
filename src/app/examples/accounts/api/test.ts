@@ -1,4 +1,4 @@
-import { Api } from '#lib/Api';
+import { Api } from '#lib/context/Api';
 
 export class TestSession extends Api {
   async get() {

@@ -1,6 +1,6 @@
 import { helloWorld } from '#app/examples/entities/actions/methods.ts';
-import { Api } from '#lib/Api';
-import { canConnectWebSocket } from '#lib/permissions';
+import { Api } from '#lib/context/Api';
+import { useWebSocket } from '#lib/security/permissions';
 import { Permission, type WebSocketRPC } from '@uah/server';
 import { randomUUID } from 'node:crypto';
 
@@ -11,7 +11,7 @@ interface Payload {
 export class MyWebsocket extends Api implements WebSocketRPC {
   methods = { helloWorld };
 
-  @Permission(canConnectWebSocket)
+  @Permission(useWebSocket)
   async onOpen(payload: Payload) {
     this.subscribeToChannel(payload.channel);
     this.sendMessageToSocket('Test sendMessageToSocket');

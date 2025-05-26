@@ -1,4 +1,4 @@
-import type { User } from '#app/examples/entities/models/User.ts';
+import type { User } from '#lib/types/user';
 import { Postgres, Server, ServerContext, SessionJWT } from '@uah/server';
 
 @Server({
@@ -18,7 +18,7 @@ import { Postgres, Server, ServerContext, SessionJWT } from '@uah/server';
 })
 export class Api extends ServerContext {
   lang: string;
-  uid!: User['uid'];
+  user!: User;
 
   constructor(preset: { lang: string }) {
     super();

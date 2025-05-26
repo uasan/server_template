@@ -6,7 +6,7 @@ import {
   type Text,
 } from '@uah/server';
 // import { canGetEntities } from '#lib/permissions';
-import { Api } from '#lib/Api.ts';
+import { Api } from '#lib/context/Api.ts';
 import type { EntityTable } from '../models/Entity.ts';
 import { User } from '../models/User.ts';
 import { Direction as Dir, type IntPositive, type Keywords, type PhoneNumber } from '../queries/myTypes.ts';
