@@ -1,7 +1,14 @@
-export const getEntities = () => true;
-export const useWebSocket = () => true;
+import { Permission } from '@uah/server';
+import { isUser } from './rules';
+
+export const GetEntities = new Permission({
+  rules: [isUser],
+});
+export const UseWebSocket = new Permission({
+  rules: [isUser],
+});
 
 export const permissions = {
-  getEntities,
-  useWebSocket,
+  GetEntities,
+  UseWebSocket,
 };

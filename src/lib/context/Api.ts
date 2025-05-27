@@ -24,4 +24,6 @@ export class Api extends ServerContext {
     super();
     this.lang = preset.lang;
   }
+
+  override async auth() {}
 }
