@@ -3,7 +3,6 @@ import type { User } from './User';
 
 @Table({
   name: 'persons.entitiesCamelCase',
-  isAutoCreate: true,
   primary: ['id'],
   // references: {
   //   myRefName: {
